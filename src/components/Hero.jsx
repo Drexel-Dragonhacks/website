@@ -84,7 +84,7 @@ const Hero = () => {
 
   return (
     <div className="relative h-dvh w-screen overflow-x-hidden">
-      {loading && (
+      {false && (
         <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50">
           {/* https://uiverse.io/G4b413l/tidy-walrus-92 */}
           <div className="three-body">
@@ -141,31 +141,31 @@ const Hero = () => {
         </div>
 
         <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75">
-          G<b>A</b>MING
+          20<b>25</b>
         </h1>
 
         <div className="absolute left-0 top-0 z-40 size-full">
           <div className="mt-24 px-5 sm:px-10">
             <h1 className="special-font hero-heading text-blue-100">
-              redefi<b>n</b>e
+              Drago<b>n</b>hacks
             </h1>
 
             <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
-              Enter the Metagame Layer <br /> Unleash the Play Economy
+              Unleash your creativity <br /> for 24 hours of code
             </p>
 
-            <Button
-              id="watch-trailer"
-              title="Watch trailer"
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfD0XKFp2OMz5wSymu4VNTEQU9UNOKTEMgCz2MbSDO7Zn0zQg/viewform?usp=sf_link"><Button
+              id="register-now"
+              title="Register now"
               leftIcon={<TiLocationArrow />}
               containerClass="bg-yellow-300 flex-center gap-1"
-            />
+            /></a>
           </div>
         </div>
       </div>
 
       <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black">
-        G<b>A</b>MING
+        2025
       </h1>
     </div>
   );

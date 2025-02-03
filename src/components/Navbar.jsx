@@ -6,7 +6,7 @@ import { TiLocationArrow } from "react-icons/ti";
 
 import Button from "./Button";
 
-const navItems = ["Nexus", "Vault", "Prologue", "About", "Contact"];
+const navItems = ["Home", "About", "Faq", "Contact"];
 
 const NavBar = () => {
   // State for toggling audio and visual indicator
@@ -20,6 +20,8 @@ const NavBar = () => {
   const { y: currentScrollY } = useWindowScroll();
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
 
   // Toggle audio and visual indicator
   const toggleAudioIndicator = () => {
@@ -71,19 +73,24 @@ const NavBar = () => {
         <nav className="flex size-full items-center justify-between p-4">
           {/* Logo and Product button */}
           <div className="flex items-center gap-7">
-            <img src="/img/logo.png" alt="logo" className="w-10" />
+            <img src="/img/logo.png" alt="logo" className="w-24" />
 
-            <Button
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfD0XKFp2OMz5wSymu4VNTEQU9UNOKTEMgCz2MbSDO7Zn0zQg/viewform?usp=sf_link"><Button
               id="product-button"
-              title="Products"
+              title="REGISTER NOW"
               rightIcon={<TiLocationArrow />}
               containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
-            />
+            /></a>
           </div>
 
           {/* Navigation Links and Audio Button */}
           <div className="flex h-full items-center">
-            <div className="hidden md:block">
+          <div className="md:hidden">
+            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="nav-hover-btn">
+              ☰ {/* A simple hamburger menu icon */}
+              </button>
+            </div>
+            <div className={`${isMobileMenuOpen ? "block" : "hidden"} md:block`}>
               {navItems.map((item, index) => (
                 <a
                   key={index}

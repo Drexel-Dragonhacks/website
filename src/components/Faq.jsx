@@ -90,7 +90,7 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
               }}
             />
             <TiLocationArrow className="relative z-20" />
-            <p className="relative z-20">coming soon</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfD0XKFp2OMz5wSymu4VNTEQU9UNOKTEMgCz2MbSDO7Zn0zQg/viewform?usp=sf_link"><p className="relative z-20">REGISTER NOW</p></a>
           </div>
         )}
       </div>
@@ -98,17 +98,15 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
   );
 };
 
-const Features = () => (
+const Faq = () => (
   <section className="bg-black pb-52">
     <div className="container mx-auto px-3 md:px-10">
       <div className="px-5 py-32">
         <p className="font-circular-web text-lg text-blue-50">
-          Into the Metagame Layer
+          WHO WE ARE
         </p>
-        <p className="max-w-md font-circular-web text-lg text-blue-50 opacity-50">
-          Immerse yourself in a rich and ever-expanding universe where a vibrant
-          array of products converge into an interconnected overlay experience
-          on your world.
+        <p className="max-w-2xl font-circular-web text-lg text-blue-50 opacity-50">
+        Welcome to DragonHacks 2025! DragonHacks is Drexel University's 24-hour hackathon which will be hosted by Drexel University IEEE in Spring of 2025. The 2025 edition is bringing the brightest minds of the world's best schools to spend 24 hours creating groundbreaking new products from scratch! This year, we are planning a fully in-person hackathon experience. There will be meet-ups with representatives from various companies, team-building events, tech talks, and workshops, as well as a number of other fun events, all in 24 hours. We hope to see you here!
         </p>
       </div>
 
@@ -117,10 +115,10 @@ const Features = () => (
           src="videos/feature-1.mp4"
           title={
             <>
-              radia<b>n</b>t
+              What is a Hackatho<b>n</b>?
             </>
           }
-          description="A cross-platform metagame app, turning your activities across Web2 and Web3 games into a rewarding adventure."
+          description="A hackathon is a 24 hour event where hackers all over the globe will collaborate on creating a functioning software and hardware by the end of the event."
           isComingSoon
         />
       </BentoTilt>
@@ -128,65 +126,85 @@ const Features = () => (
       <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
         <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
           <BentoCard
-            src="videos/feature-2.mp4"
+            src=""
             title={
               <>
-                zig<b>m</b>a
+                Who can attend?
               </>
             }
-            description="An anime and gaming-inspired NFT collection - the IP primed for expansion."
+            description="DragonHacks is open to all university students aged 18 or older. No prior hackathon or experience is necessary since the event will have workshops and plenty of learning opportunities."
             isComingSoon
           />
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
+        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
           <BentoCard
-            src="videos/feature-3.mp4"
+            src=""
             title={
               <>
-                n<b>e</b>xus
+                When and where is it?
               </>
             }
-            description="A gamified social hub, adding a new dimension of play to social interaction for Web3 communities."
+            description="The hackathon is the weekend of April 26th, 2025. It will be held in-person at Drexel University's LeBow College of Business (3220 Market St, Philadelphia, PA 19104). More details about the event will be emailed to you closer to the event date!"
             isComingSoon
           />
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
+        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2 ">
           <BentoCard
-            src="videos/feature-4.mp4"
+            src=""
             title={
               <>
-                az<b>u</b>l
+                No team or idea?
               </>
             }
-            description="A cross-world AI Agent - elevating your gameplay to be more fun and productive."
-            isComingSoon
+            description="Many of our hackers don't have a team coming in, and find them at the event! We have a ton of team-forming activities to help you find teammates and idea brainstorming sessions for all our tracks."
+
           />
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_2">
-          <div className="flex size-full flex-col justify-between bg-violet-300 p-5">
-            <h1 className="bento-title special-font max-w-64 text-black">
-              M<b>o</b>re co<b>m</b>ing s<b>o</b>on.
-            </h1>
+        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2 ">
+          <BentoCard
+            src=""
+            title={
+              <>
+                Prizes?
+              </>
+            }
+            description="There are plenty of prizes to be won! A unique element of DragonHacks is the jaw-dropping prize pool where the winner gets the first choice of prizes, down to the 2nd runner-up, with every member choosing one prize each."
 
-            <TiLocationArrow className="m-5 scale-[5] self-end" />
-          </div>
-        </BentoTilt>
-
-        <BentoTilt className="bento-tilt_2">
-          <video
-            src="videos/feature-5.mp4"
-            loop
-            muted
-            autoPlay
-            className="size-full object-cover object-center"
           />
         </BentoTilt>
+        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2 ">
+          <BentoCard
+            src=""
+            title={
+              <>
+                Cost?
+              </>
+            }
+            description="Thanks to our wonderful sponsors, DragonHacks is free for all who attend!"
+
+          />
+        </BentoTilt>
+        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2 ">
+          <BentoCard
+            src=""
+            title={
+              <>
+                Team size?
+              </>
+            }
+            description="Each team may have a maximum of three members."
+
+          />
+        </BentoTilt>
+        
+
+        
       </div>
     </div>
   </section>
 );
 
-export default Features;
+export default Faq;

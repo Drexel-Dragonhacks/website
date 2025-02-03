@@ -12,10 +12,10 @@ const Footer = () => {
     <footer className="w-screen bg-[#5542ff] py-4 text-black">
       <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 md:flex-row">
         <p className="text-center text-sm font-light md:text-left">
-          ©Nova 2024. All rights reserved
+          © DragonHacks 2025. All rights reserved
         </p>
 
-        <div className="flex justify-center gap-4  md:justify-start">
+        {/** <div className="flex justify-center gap-4  md:justify-start">
           {socialLinks.map((link, index) => (
             <a
               key={index}
@@ -28,12 +28,15 @@ const Footer = () => {
             </a>
           ))}
         </div>
-
+      */}
+      <div className="flex justify-center gap-4  md:justify-start">
+          <a href="https://www.instagram.com/faris.dababneh/?next=%2F" className="text-center text-sm hover:underline">Made by Faris Dababneh</a>
+        </div>
         <a
-          href="#privacy-policy"
+          href="https://mlh.io/privacy"
           className="text-center text-sm font-light hover:underline md:text-right"
         >
-          Privacy Policy
+          MLH Privacy Policy
         </a>
       </div>
     </footer>
