@@ -5,6 +5,7 @@ import Faq from "./components/Faq";
 import Story from "./components/Story";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import Sponsors from "./components/Sponsors";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Hero />
       <About />
       <Faq />
+      <Sponsors />
       <Contact />
       <Footer />
     </main>
