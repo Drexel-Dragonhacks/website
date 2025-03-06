@@ -151,7 +151,7 @@ const Hero = () => {
             </h1>
 
             <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
-              Unleash your creativity <br /> for 24 hours of code
+              Unleash your creativity <br /> for 24 hours of code <br /> on <span classname='underline'>April 26th</span>
             </p>
 
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSfD0XKFp2OMz5wSymu4VNTEQU9UNOKTEMgCz2MbSDO7Zn0zQg/viewform?usp=sf_link"><Button
