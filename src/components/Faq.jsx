@@ -69,7 +69,7 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
         <div>
           <h1 className="bento-title special-font">{title}</h1>
           {description && (
-            <p className="mt-3 max-w-64 text-xs md:text-base">{description}</p>
+            <p className="mt-3 max-w-64 text-sm md:text-base">{description}</p>
           )}
         </div>
 
@@ -123,8 +123,8 @@ const Faq = () => (
         />
       </BentoTilt>
 
-      <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
-        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
+      <div className="grid min-h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
+        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2 pb-24">
           <BentoCard
             src=""
             title={
@@ -133,7 +133,7 @@ const Faq = () => (
               </>
             }
             description="DragonHacks is open to all university students aged 18 or older. No prior hackathon or experience is necessary since the event will have workshops and plenty of learning opportunities."
-            isComingSoon
+      
           />
         </BentoTilt>
 
@@ -146,11 +146,11 @@ const Faq = () => (
               </>
             }
             description="The hackathon is the weekend of April 26th, 2025. It will be held in-person at Drexel University's LeBow College of Business (3220 Market St, Philadelphia, PA 19104). More details about the event will be emailed to you closer to the event date!"
-            isComingSoon
+            
           />
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2 ">
+        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
           <BentoCard
             src=""
             title={
@@ -158,12 +158,12 @@ const Faq = () => (
                 No team or idea?
               </>
             }
-            description="Many of our hackers don't have a team coming in, and find them at the event! We have a ton of team-forming activities to help you find teammates and idea brainstorming sessions for all our tracks."
+            description="Many of our hackers don't have a team coming in, and find them at the event! We have a ton of team-forming activities to help you find teammates and idea brainstorming sessions for all our tracks.                  "
 
           />
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2 ">
+        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
           <BentoCard
             src=""
             title={
