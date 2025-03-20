@@ -9,7 +9,7 @@ import VideoPreview from "./VideoPreview";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Hero = () => {
+const Home = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [hasClicked, setHasClicked] = useState(false);
 
@@ -83,7 +83,7 @@ const Hero = () => {
   const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
 
   return (
-    <div className="relative h-dvh w-screen overflow-x-hidden">
+    <div className="relative h-dvh w-screen overflow-x-hidden" id="home">
       {false && (
         <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50">
           {/* https://uiverse.io/G4b413l/tidy-walrus-92 */}
@@ -171,4 +171,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default Home;

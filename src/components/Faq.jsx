@@ -57,7 +57,7 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
   const handleMouseLeave = () => setHoverOpacity(0);
 
   return (
-    <div className="relative size-full">
+    <div className="relative size-full" id="faq">
       <video
         src={src}
         loop
@@ -118,7 +118,7 @@ const Faq = () => (
               What is a Hackatho<b>n</b>?
             </>
           }
-          description="A hackathon is a 24 hour event where hackers all over the globe will collaborate on creating a functioning software and hardware by the end of the event."
+          description="A hackathon is an event where students 'hack' together and develop an app, website, game, etc. in 24-48 hours. There will be no malicious 'hacking.' It's about having fun, being creative, and challenging yourself to build something amazing!"
           isComingSoon
         />
       </BentoTilt>
@@ -175,6 +175,18 @@ const Faq = () => (
 
           />
         </BentoTilt>
+        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
+          <BentoCard
+            src=""
+            title={
+              <>
+                Travel reimbursement?
+              </>
+            }
+            description="Unfortunately, DragonHacks does not provide travel reimbursement at this time."
+
+          />
+        </BentoTilt>
         <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2 ">
           <BentoCard
             src=""
@@ -200,8 +212,6 @@ const Faq = () => (
           />
         </BentoTilt>
         <h1 className="bento-title special-font">SPONSORS</h1>
-
-        
       </div>
     </div>
   </section>

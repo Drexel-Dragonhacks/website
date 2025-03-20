@@ -10,7 +10,14 @@ const Sponsors = () => (
         <p className="bento-title special-font text-white text-center pb-10">
           SPONSORS
         </p>
-        <img src="/public/img/mlh-logo-color.png" className="mx-auto w-100"/>
+        <div className="flex items-center justify-center mx-auto ove flex-wrap space-y-10">
+          <img src="/public/img/mlh-logo-color.png" className="mx-auto md:w-1/3"/>
+          <img src="/public/img/ballinger.png" className="mx-auto md:w-1/3 bg-white"/>
+          <div>
+          <img src="/public/img/autodesk.png" className="mx-auto md:w-3/4 bg-white"/>
+          </div>
+          
+        </div>
       </div>
 
 

@@ -1,5 +1,5 @@
 import About from "./components/About";
-import Hero from "./components/Hero";
+import Home from "./components/Home";
 import NavBar from "./components/Navbar";
 import Faq from "./components/Faq";
 import Story from "./components/Story";
@@ -11,7 +11,7 @@ function App() {
   return (
     <main className="relative min-h-screen w-screen overflow-x-hidden">
       <NavBar />
-      <Hero />
+      <Home />
       <About />
       <Faq />
       <Sponsors />

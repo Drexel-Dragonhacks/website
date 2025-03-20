@@ -67,7 +67,7 @@ const NavBar = () => {
   return (
     <div
       ref={navContainerRef}
-      className="fixed inset-x-0 top-4 z-50 h-16 border-none transition-all duration-700 sm:inset-x-6"
+      className="fixed inset-x-0 top-4 z-50 h-20 border-none transition-all duration-700 sm:inset-x-6"
     >
       <header className="absolute top-1/2 w-full -translate-y-1/2">
         <nav className="flex size-full items-center justify-between p-4">
@@ -75,33 +75,66 @@ const NavBar = () => {
           <div className="flex items-center gap-7">
             <img src="/img/logo.png" alt="logo" className="w-24" />
 
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfD0XKFp2OMz5wSymu4VNTEQU9UNOKTEMgCz2MbSDO7Zn0zQg/viewform?usp=sf_link"><Button
+            {/*<a href="https://docs.google.com/forms/d/e/1FAIpQLSfD0XKFp2OMz5wSymu4VNTEQU9UNOKTEMgCz2MbSDO7Zn0zQg/viewform?usp=sf_link"><Button
               id="product-button"
               title="REGISTER NOW"
               rightIcon={<TiLocationArrow />}
               containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
-            /></a>
+            /></a>*/}
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfD0XKFp2OMz5wSymu4VNTEQU9UNOKTEMgCz2MbSDO7Zn0zQg/viewform?usp=sf_link">
+              <Button
+                id="product-button"
+                title="REGISTER NOW"
+                rightIcon={<TiLocationArrow />}
+                containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
+              />
+            </a>
           </div>
-
-          {/* Navigation Links and Audio Button */}
-          <div className="flex h-full items-center">
           <div className="md:hidden">
-            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="nav-hover-btn">
-              ☰ {/* A simple hamburger menu icon */}
-              </button>
-            </div>
-            <div className={`${isMobileMenuOpen ? "block" : "hidden"} md:block`}>
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="nav-hover-btn"
+            >
+              <p className="text-xl">☰</p>
+            </button>
+          </div>
+          {/* Navigation Links and Audio Button */}
+          <div className="hidden md:flex h-full items-center">
+            <div className={`${isMobileMenuOpen ? "block" : "hidden"} md:flex md:items-center`}>
               {navItems.map((item, index) => (
                 <a
                   key={index}
                   href={`#${item.toLowerCase()}`}
-                  className="nav-hover-btn"
+                  className="nav-hover-btn text-lg"
                 >
                   {item}
                 </a>
               ))}
             </div>
-
+            </div>
+            {/* Mobile Menu */}
+          {isMobileMenuOpen && (
+            <div className="absolute top-20 left-0 w-full bg-black shadow-lg md:hidden flex flex-col items-left space-y-4 p-4 z-50">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfD0XKFp2OMz5wSymu4VNTEQU9UNOKTEMgCz2MbSDO7Zn0zQg/viewform?usp=sf_link">
+              <Button
+                id="product-button"
+                title="REGISTER NOW"
+                className='nav-hover-btn'
+                containerClass="bg-blue-50 items-center justify-center gap-1 w-36"
+              />
+            </a>
+              {navItems.map((item, index) => (
+    <a
+      key={index}
+      href={`#${item.toLowerCase()}`}
+      className="nav-hover-btn "
+      onClick={() => setIsMobileMenuOpen(false)}
+    >
+      {item}
+    </a>
+  ))}
+            </div>
+          )}     
             <button
               onClick={toggleAudioIndicator}
               className="ml-10 flex items-center space-x-0.5"
@@ -124,7 +157,7 @@ const NavBar = () => {
                 />
               ))}
             </button>
-          </div>
+          
         </nav>
       </header>
     </div>
