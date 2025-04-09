@@ -211,6 +211,18 @@ const Faq = () => (
 
           />
         </BentoTilt>
+        <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2 ">
+          <BentoCard
+            src=""
+            title={
+              <>
+                Tracks?
+              </>
+            }
+            description="We currently have tracks for Finance, Medicine, Hardware, and AI!"
+
+          />
+        </BentoTilt>
         <h1 className="bento-title special-font">SPONSORS</h1>
       </div>
     </div>
