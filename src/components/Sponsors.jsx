@@ -16,6 +16,7 @@ const Sponsors = () => (
           <img src="/public/img/autodesk.png" className="mx-auto md:w-1/2 bg-white"/>
           <img src={pizza} className="mx-auto md:w-1/2"/>
           <img src="/public/img/pennoni.png" className="mx-auto md:w-1/2"/>
+          <img src="/public/img/ieee.png" className="mx-auto bg-white md:w-1/2"/>
         </div>
       </div>
 

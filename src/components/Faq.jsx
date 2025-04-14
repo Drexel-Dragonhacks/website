@@ -145,7 +145,7 @@ const Faq = () => (
                 When and where is it?
               </>
             }
-            description="The hackathon is the weekend of April 26th, 2025. It will be held in-person at Drexel University's LeBow College of Business (3220 Market St, Philadelphia, PA 19104). More details about the event will be emailed to you closer to the event date!"
+            description="The hackathon is the weekend of April 26th, 2025. It will be held in-person at Drexel University's Papadakis Integrated Sciences Building (3245 Chestnut St, Philadelphia, PA 19104). More details about the event will be emailed to you closer to the event date!"
             
           />
         </BentoTilt>
