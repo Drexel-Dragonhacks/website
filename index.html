@@ -1,13 +1,717 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DragonHacks 2025</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DragonHacks XII - Drexel University Hackathon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom animations for Tailwind */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 1s ease both;
+        }
+
+        .animate-shine::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(100, 255, 218, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+
+        .animate-shine:hover::before {
+            animation: shine 0.5s ease;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .count-up {
+            transition: transform 0.2s ease;
+        }
+
+        .count-up.bounce {
+            animation: bounce 0.5s ease-out;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #00bcd4;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #64ffda;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00bcd4;
+        }
+
+        /* DragonHacks nav-link styles */
+        .nav-link {
+            transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav-link:hover { 
+            color: #00bcd4;
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 188, 212, 1);
+        }
+
+        /* Card hover effect */
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 188, 212, 1);
+        }
+    </style>
+</head>
+<body class="font-sans leading-relaxed text-white bg-black overflow-x-hidden">
+    <div class="fixed inset-0 bg-gradient-to-br from-gray-900 to-gray-800 z-[-2]"></div>
+    <div class="fixed inset-0 z-[-1]" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="bg-black py-4 px-6 sticky top-0 z-[1000] flex justify-between items-center transition-all duration-300 border-b border-white/10">
+        <div class="flex items-center">
+            <div class="w-10 h-10 mr-4">
+                <img src="https://i.ibb.co/Qq1W5sX/images-removebg-preview-1.jpg" alt="DragonHacks Logo" class="w-full h-full object-contain transition-transform duration-300 hover:rotate-12">
+            </div>
+            <a href="#home" class="text-2xl font-bold text-orange-600 hover:text-ff4500 transition-colors">DragonHacks XII</a>
+        </div>
+        <ul class="flex gap-8 list-none max-md:hidden text-lg">
+            <li><a href="#home" class="nav-link text-white font-medium">Home</a></li>
+            <li><a href="#about" class="nav-link text-white font-medium">About</a></li>
+            <li><a href="#register" class="nav-link text-white font-medium">Register</a></li>
+            <li><a href="#speakers" class="nav-link text-white font-medium">Speakers</a></li>
+            <li><a href="#judges" class="nav-link text-white font-medium">Judges</a></li>
+            <li><a href="#faq" class="nav-link text-white font-medium">FAQ</a></li>
+            <li><a href="#sponsors" class="nav-link text-white font-medium">Sponsors</a></li>
+            <li><a href="#contact" class="nav-link text-white font-medium">Contact</a></li>
+        </ul>
+        <div class="w-24 h-12 bg-blue-900 text-white text-sm flex items-center justify-center rounded transition-transform duration-300 hover:scale-105">
+            MLH<br>2026
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-between text-white bg-gradient-to-br from-black to-gray-900 px-4 pt-24">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center w-full gap-12">
+            <div class="w-full md:w-1/2 text-left">
+                <div class="hero-content">
+                    <h1 class="text-6xl font-bold mb-4 animate-fadeInUp text-white drop-shadow-lg max-md:text-4xl">DragonHacks XII</h1>
+                    <p class="text-2xl mb-8 animate-fadeInUp animation-delay-200 text-gray-300 max-md:text-xl">31 January, 2026 | Drexel University</p>
+                    <p class="text-lg mb-8 animate-fadeInUp animation-delay-400 text-gray-400">24-Hour In-Person Hackathon</p>
+                    <div class="space-x-4">
+                        <a href="https://devpost.com/dragonhacks2026" class="inline-block px-8 py-4 bg-gradient-to-r from-orange-700 to-gray-600 text-white text-lg font-bold rounded-full hover:scale-105 hover:shadow-2xl hover:bg-gradient-to-r hover:from-blue-600 hover:to-orange-500 transition-all duration-300 animate-fadeInUp animation-delay-600 border-2 border-orange-600">Apply</a>
+                        <a href="#sponsors" class="inline-block px-8 py-4 bg-gradient-to-r from-orange-700 to-gray-600 text-white text-lg font-bold rounded-full hover:scale-105 hover:shadow-2xl hover:bg-gradient-to-r hover:from-orange-600 hover:to-orange-500 transition-all duration-300 animate-fadeInUp animation-delay-600 border-2 border-orange-600"> Sponsors</a>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 flex justify-center items-center">
+                <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.39/build/spline-viewer.js"></script>
+                <spline-viewer loading-anim-type="spinner-small-light" url="https://prod.spline.design/RjvkQtLvrUgiT6dg/scene.splinecode" style="width: 100%; height: 500px; border-radius: 1rem;"></spline-viewer>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="py-20 bg-gray-900">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-12 text-white max-md:text-3xl">DragonHacks 2025 Recap</h2>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+                <div class="text-center p-8 bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl hover:-translate-y-2 transition-transform border border-gray-600 hover:border-orange-600">
+                    <span class="block text-5xl font-bold text-orange-600 count-up" data-target="2">0</span>
+                    <span>Countries</span>
+                </div>
+                <div class="text-center p-8 bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl hover:-translate-y-2 transition-transform border border-gray-600 hover:border-orange-600">
+                    <span class="block text-5xl font-bold text-orange-600 count-up" data-target="20">0</span>
+                    <span>Universities</span>
+                </div>
+                <div class="text-center p-8 bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl hover:-translate-y-2 transition-transform border border-gray-600 hover:border-orange-600">
+                    <span class="block text-5xl font-bold text-orange-600 count-up" data-target="150">0</span>
+                    <span>Hackers</span>
+                </div>
+                <div class="text-center p-8 bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl hover:-translate-y-2 transition-transform border border-gray-600 hover:border-orange-600">
+                    <span class="block text-5xl font-bold text-orange-600 count-up" data-target="10000">$0K</span>
+                    <span>Prizes</span>
+                </div>
+                <div class="text-center p-8 bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl hover:-translate-y-2 transition-transform border border-gray-600 hover:border-orange-600">
+                    <span class="block text-5xl font-bold text-orange-600 count-up" data-target="24">0</span>
+                    <span>Hours</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-black">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-12 text-white max-md:text-3xl animate-fadeInUp">About DragonHacks</h2>
+            <div class="text-lg leading-loose text-gray-300 mb-12 animate-fadeInUp animation-delay-200">
+                <p class="mb-6">DragonHacks is Drexel University's premier 24-hour in-person hackathon, organized by Drexel IEEE. It unites college students from all majors to collaborate, innovate, and build groundbreaking projects in a high-energy environment.</p>
+                <p class="mb-6">With workshops, mentorship, and resources for all skill levels, DragonHacks is your chance to turn ideas into reality. Choose a track and make an impact!</p>
+            </div>
+            <h3 class="text-2xl font-bold mt-8 mb-6 text-orange-600 animate-fadeInUp animation-delay-400">Tracks</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="p-8 bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl card-hover border border-gray-600 hover:border-orange-600 animate-fadeInUp animation-delay-600">
+                    <h4 class="text-xl font-bold text-white mb-4">Healthcare</h4>
+                    <p class="text-gray-300">Develop solutions to improve patient care, medical technology, or healthcare accessibility.</p>
+                </div>
+                <div class="p-8 bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl card-hover border border-gray-600 hover:border-orange-600 animate-fadeInUp animation-delay-800">
+                    <h4 class="text-xl font-bold text-white mb-4">Fintech</h4>
+                    <p class="text-gray-300">Create innovative financial tools, from blockchain to budgeting apps.</p>
+                </div>
+                <div class="p-8 bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl card-hover border border-gray-600 hover:border-orange-600 animate-fadeInUp animation-delay-1000">
+                    <h4 class="text-xl font-bold text-white mb-4">Sustainability</h4>
+                    <p class="text-gray-300">Build projects that promote environmental conservation and sustainable practices.</p>
+                </div>
+            </div>
+            <h3 class="text-2xl font-bold mt-8 mb-6 text-orange-600 animate-fadeInUp animation-delay-1200">Judging Criteria</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <div class="p-6 bg-gray-900 rounded-xl card-hover border border-gray-600 hover:border-orange-600 animate-fadeInUp animation-delay-1400">
+                    <p class="font-bold text-white">Track Fit</p>
+                    <p class="text-gray-300 text-sm">Alignment with chosen theme</p>
+                </div>
+                <div class="p-6 bg-gray-900 rounded-xl card-hover border border-gray-600 hover:border-orange-600 animate-fadeInUp animation-delay-1600">
+                    <p class="font-bold text-white">Code Quality</p>
+                    <p class="text-gray-300 text-sm">Clean, maintainable code</p>
+                </div>
+                <div class="p-6 bg-gray-900 rounded-xl card-hover border border-gray-600 hover:border-orange-600 animate-fadeInUp animation-delay-1800">
+                    <p class="font-bold text-white">Innovation</p>
+                    <p class="text-gray-300 text-sm">Creative and novel solutions</p>
+                </div>
+                <div class="p-6 bg-gray-900 rounded-xl card-hover border border-gray-600 hover:border-orange-600 animate-fadeInUp animation-delay-2000">
+                    <p class="font-bold text-white">Impact</p>
+                    <p class="text-gray-300 text-sm">Potential for real-world change</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Register Section -->
+    <section id="register" class="py-20 bg-gradient-to-br from-gray-900 to-gray-800">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-12 text-white max-md:text-3xl animate-fadeInUp">Join DragonHacks 2026</h2>
+            <p class="text-lg mb-6 text-gray-300 animate-fadeInUp animation-delay-200">Get ready to innovate! Registration opens in October 2025. Form a team of 2–4 and showcase your skills at Drexel University.</p>
+            <div class="mb-12 animate-fadeInUp animation-delay-400">
+                <p class="text-xl font-bold text-orange-600 mb-4">Registration Opens Soon!</p>
+                <div id="countdown" class="text-2xl text-white bg-gray-900 p-6 rounded-xl inline-block border border-orange-600 animate-pulse">
+                    <span>October 2025</span>
+                </div>
+            </div>
+            <a href="https://devpost.com/dragonhacks2026" class="inline-block px-10 py-5 bg-gradient-to-r from-orange-600 to-orange-500 text-white text-xl font-bold rounded-full hover:scale-105 hover:shadow-2xl transition-all duration-300 animate-fadeInUp animation-delay-600 border-2 border-orange-600 animate-shine">Register on Devpost (Coming Soon)</a>
+            <h3 class="text-2xl font-bold mt-12 mb-6 text-orange-600 animate-fadeInUp animation-delay-800">Eligibility & Rules</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
+                <div class="p-6 bg-gray-900 rounded-xl card-hover border border-gray-600 hover:border-orange-600 animate-fadeInUp animation-delay-1000">
+                    <p class="font-bold text-white">Who Can Join</p>
+                    <p class="text-gray-300 text-sm">College students 18+ from any institution</p>
+                </div>
+                <div class="p-6 bg-gray-900 rounded-xl card-hover border border-gray-600 hover:border-orange-600 animate-fadeInUp animation-delay-1200">
+                    <p class="font-bold text-white">Team Size</p>
+                    <p class="text-gray-300 text-sm">2–4 members per team</p>
+                </div>
+                <div class="p-6 bg-gray-900 rounded-xl card-hover border border-gray-600 hover:border-orange-600 animate-fadeInUp animation-delay-1400">
+                    <p class="font-bold text-white">Live Coding</p>
+                    <p class="text-gray-300 text-sm">All work must be done during the event</p>
+                </div>
+                <div class="p-6 bg-gray-900 rounded-xl card-hover border border-gray-600 hover:border-orange-600 animate-fadeInUp animation-delay-1600">
+                    <p class="font-bold text-white">Submission</p>
+                    <p class="text-gray-300 text-sm">Submit via Devpost before deadline</p>
+                </div>
+            </div>
+            <h3 class="text-2xl font-bold mt-8 mb-6 text-orange-600 animate-fadeInUp animation-delay-1800">Typical Schedule</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <div class="p-6 bg-gray-900 rounded-xl card-hover border border-gray-600 hover:border-orange-600 animate-fadeInUp animation-delay-2000">
+                    <p class="font-bold text-white">Day 1</p>
+                    <p class="text-gray-300 text-sm">Opening, team formation, hacking begins</p>
+                </div>
+                <div class="p-6 bg-gray-900 rounded-xl card-hover border border-gray-600 hover:border-orange-600 animate-fadeInUp animation-delay-2200">
+                    <p class="font-bold text-white">Day 2</p>
+                    <p class="text-gray-300 text-sm">Final sprint, submissions, demos, judging</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speakers Section -->
+    <section id="speakers" class="py-20 bg-black">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-12 text-white max-md:text-3xl">DragonHacks Speakers</h2>
+            <p class="text-lg mb-6 text-gray-300">Experts inspiring innovation and creativity at DragonHacks.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-8 bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl hover:-translate-y-2 transition-transform border border-gray-600 hover:border-orange-600">
+                    <img src="https://via.placeholder.com/150" alt="TBH" class="w-32 h-32 mx-auto rounded-full mb-4 transition-transform duration-300 hover:scale-110"/>
+                    <h3 class="text-xl font-bold text-white">TBH</h3>
+                    <p class="text-gray-400">TBH</p>
+                    <p class="text-sm text-gray-300">Drexel University</p>
+                </div>
+                <div class="text-center p-8 bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl hover:-translate-y-2 transition-transform border border-gray-600 hover:border-orange-600">
+                    <img src="https://via.placeholder.com/150" alt="TBH" class="w-32 h-32 mx-auto rounded-full mb-4 transition-transform duration-300 hover:scale-110"/>
+                    <h3 class="text-xl font-bold text-white">TBH</h3>
+                    <p class="text-gray-400">TBH</p>
+                    <p class="text-sm text-gray-300">Industry Expert</p>
+                </div>
+                <div class="text-center p-8 bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl hover:-translate-y-2 transition-transform border border-gray-600 hover:border-orange-600">
+                    <img src="https://via.placeholder.com/150" alt="TBH" class="w-32 h-32 mx-auto rounded-full mb-4 transition-transform duration-300 hover:scale-110"/>
+                    <h3 class="text-xl font-bold text-white">TBH</h3>
+                    <p class="text-gray-400">TBH</p>
+                    <p class="text-sm text-gray-300">Drexel University</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Judges Section -->
+    <section id="judges" class="py-20 bg-gray-900">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-12 text-white max-md:text-3xl">DragonHacks Judges</h2>
+            <p class="text-lg mb-6 text-gray-300">Industry and academic experts evaluating your projects.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center p-8 bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl hover:-translate-y-2 transition-transform border border-gray-600 hover:border-orange-600">
+                    <img src="https://via.placeholder.com/150" alt="TBH" class="w-32 h-32 mx-auto rounded-full mb-2 transition-transform duration-300 hover:scale-110"/>
+                    <p class="font-bold text-white">TBH</p>
+                    <p class="text-sm text-gray-300">Drexel University</p>
+                </div>
+                <div class="text-center p-8 bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl hover:-translate-y-2 transition-transform border border-gray-600 hover:border-orange-600">
+                    <img src="https://via.placeholder.com/150" alt="TBH" class="w-32 h-32 mx-auto rounded-full mb-2 transition-transform duration-300 hover:scale-110"/>
+                    <p class="font-bold text-white">TBH</p>
+                    <p class="text-sm text-gray-300">Drexel University</p>
+                </div>
+                <div class="text-center p-8 bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl hover:-translate-y-2 transition-transform border border-gray-600 hover:border-orange-600">
+                    <img src="https://via.placeholder.com/150" alt="TBH" class="w-32 h-32 mx-auto rounded-full mb-2 transition-transform duration-300 hover:scale-110"/>
+                    <p class="font-bold text-white">TBH</p>
+                    <p class="text-sm text-gray-300">Tech Industry</p>
+                </div>
+                <div class="text-center p-8 bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl hover:-translate-y-2 transition-transform border border-gray-600 hover:border-orange-600">
+                    <img src="https://via.placeholder.com/150" alt="TBH" class="w-32 h-32 mx-auto rounded-full mb-2 transition-transform duration-300 hover:scale-110"/>
+                    <p class="font-bold text-white">TBH</p>
+                    <p class="text-sm text-gray-300">Tech Industry</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="py-20 bg-black">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-white max-md:text-3xl">Typical Schedule</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-gray-900 p-8 rounded-xl shadow-2xl border border-gray-700">
+                    <h3 class="text-2xl font-bold mb-4 text-orange-600">Day 1</h3>
+                    <div class="flex items-center py-4 border-b border-gray-700 last:border-b-0">
+                        <span class="font-bold text-cyan-500 min-w-[80px]">Morning</span>
+                        <div class="ml-4">
+                            <strong class="text-white">Opening Ceremony</strong>
+                            <p class="text-gray-300 text-sm">Welcome, rules, and team formation</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center py-4 border-b border-gray-700 last:border-b-0">
+                        <span class="font-bold text-cyan-500 min-w-[80px]">Midday</span>
+                        <div class="ml-4">
+                            <strong class="text-white">Hacking Begins</strong>
+                            <p class="text-gray-300 text-sm">Start building your projects with meals provided to fuel your creativity</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center py-4 border-b border-gray-700 last:border-b-0">
+                        <span class="font-bold text-cyan-500 min-w-[80px]">Afternoon</span>
+                        <div class="ml-4">
+                            <strong class="text-white">Workshops</strong>
+                            <p class="text-gray-300 text-sm">Learn new skills from experts with snacks available</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center py-4 border-b border-gray-700 last:border-b-0">
+                        <span class="font-bold text-cyan-500 min-w-[80px]">Evening</span>
+                        <div class="ml-4">
+                            <strong class="text-white">Hacking Continues</strong>
+                            <p class="text-gray-300 text-sm">Keep coding with energy drinks and dinner to stay energized</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center py-4 border-b border-gray-700 last:border-b-0">
+                        <span class="font-bold text-cyan-500 min-w-[80px]">Night</span>
+                        <div class="ml-4">
+                            <strong class="text-white">Late-Night Hacking</strong>
+                            <p class="text-gray-300 text-sm">Push through with snacks and energy drinks provided by our sponsors</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-900 p-8 rounded-xl shadow-2xl border border-gray-700">
+                    <h3 class="text-2xl font-bold mb-4 text-orange-600">Day 2</h3>
+                    <div class="flex items-center py-4 border-b border-gray-700 last:border-b-0">
+                        <span class="font-bold text-cyan-500 min-w-[80px]">Morning</span>
+                        <div class="ml-4">
+                            <strong class="text-white">Final Sprint</strong>
+                            <p class="text-gray-300 text-sm">Last chance to finish projects</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center py-4 border-b border-gray-700 last:border-b-0">
+                        <span class="font-bold text-cyan-500 min-w-[80px]">Midday</span>
+                        <div class="ml-4">
+                            <strong class="text-white">Submissions Due</strong>
+                            <p class="text-gray-300 text-sm">Submit via Devpost</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center py-4 border-b border-gray-700 last:border-b-0">
+                        <span class="font-bold text-cyan-500 min-w-[80px]">Afternoon</span>
+                        <div class="ml-4">
+                            <strong class="text-white">Demos & Judging</strong>
+                            <p class="text-gray-300 text-sm">Present to judges and announce winners</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prizes Section -->
+    <section id="prizes" class="py-20 bg-gray-900">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 the="text-4xl font-bold text-center mb-12 text-white max-md:text-3xl">Prizes & Awards</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="text-center p-8 bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl relative overflow-hidden hover:scale-105 transition-transform border border-gray-600 hover:border-orange-600 animate-shine">
+                    <div class="text-lg mb-4 text-gray-300">🥇 1st Place</div>
+                    <div class="text-4xl font-bold mb-4 text-orange-600">$4,000</div>
+                    <p>Cash prize, tech gadgets, and internship opportunities</p>
+                </div>
+                <div class="text-center p-8 bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl relative overflow-hidden hover:scale-105 transition-transform border border-gray-600 hover:border-orange-600 animate-shine">
+                    <div class="text-lg mb-4 text-gray-300">🥈 2nd Place</div>
+                    <div class="text-4xl font-bold mb-4 text-orange-600">$2,500</div>
+                    <p>Cash prize and tech gadgets</p>
+                </div>
+                <div class="text-center p-8 bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl relative overflow-hidden hover:scale-105 transition-transform border border-gray-600 hover:border-orange-600 animate-shine">
+                    <div class="text-lg mb-4 text-gray-300">🥉 3rd Place</div>
+                    <div class="text-4xl font-bold mb-4 text-orange-600">$1,500</div>
+                    <p>Cash prize and event merchandise</p>
+                </div>
+                <div class="text-center p-8 bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl relative overflow-hidden hover:scale-105 transition-transform border border-gray-600 hover:border-orange-600 animate-shine">
+                    <div class="text-lg mb-4 text-gray-300">🏆 Best Healthcare Track</div>
+                    <div class="text-4xl font-bold mb-4 text-orange-600">$1,000</div>
+                    <p>For the best healthcare-focused project</p>
+                </div>
+                <div class="text-center p-8 bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl relative overflow-hidden hover:scale-105 transition-transform border border-gray-600 hover:border-orange-600 animate-shine">
+                    <div class="text-lg mb-4 text-gray-300">🚀 Best Fintech Track</div>
+                    <div class="text-4xl font-bold mb-4 text-orange-600">$1,000</div>
+                    <p>For the best fintech-focused project</p>
+                </div>
+                <div class="text-center p-8 bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl relative overflow-hidden hover:scale-105 transition-transform border border-gray-600 hover:border-orange-600 animate-shine">
+                    <div class="text-lg mb-4 text-gray-300">💡 Best Sustainability Track</div>
+                    <div class="text-4xl font-bold mb-4 text-orange-600">$500</div>
+                    <p>For the best sustainability-focused project</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsors Section -->
+    <section id="sponsors" class="py-20 bg- sliver">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-12 text-white max-md:text-3xl">Our Sponsors</h2>
+            <p class="text-lg mb-6 text-gray-300">Thank you to our incredible sponsors for supporting DragonHacks XII. Their generosity enables us to provide prizes, resources, and an unforgettable experience.</p>
+            <h3 class="text-2xl font-bold mb-4 text-white">Platinum Sponsors</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-gray-900 p-8 rounded-xl text-center shadow-lg hover:-translate-y-2 transition-transform border border-gray-700 hover:border-orange-600">
+                    <img src="https://marvel-b1-cdn.bc0a.com/f00000000272227/www.anaplan.com/content/dam/anaplan/wp-content/uploads/2021/12/autodesk-logo-alternate-rgb-white-medium-544x360.png" alt="Autodesk" class="h-16 mx-auto mb-4 transition-transform duration-300 hover:scale-110"/>
+                    <h3 class="text-white">Autodesk</h3>
+                    <p class="text-gray-400">Design Technology Partner</p>
+                </div>
+            </div>
+            <h3 class="text-2xl font-bold mb-4 text-white">Gold Sponsors</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-gray-900 p-8 rounded-xl text-center shadow-lg hover:-translate-y-2 transition-transform border border-gray-700 hover:border-orange-600">
+                    <img src="https://cdn.freebiesupply.com/logos/large/2x/monster-energy-logo-png-transparent.png" alt="Monster Energy" class="h-16 mx-auto mb-4 transition-transform duration-300 hover:scale-110"/>
+                    <h3 class="text-white">Monster Energy</h3>
+                    <p class="text-gray-400">Energy Drink Partner</p>
+                </div>
+                <div class="bg-gray-900 p-8 rounded-xl text-center shadow-lg hover:-translate-y-2 transition-transform border border-gray-700 hover:border-orange-600">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=ABn9GcTihqAN3GZU3HS-wsz4_fOA646dAWS8MP-d-w&s" alt="Ballinger" class="h-16 mx-auto mb-4 transition-transform duration-300 hover:scale-110"/>
+                    <h3 class="text-white">Ballinger</h3>
+                    <p class="text-gray-400">Engineering Partner</p>
+                </div>
+            </div>
+            <h3 class="text-2xl font-bold mb-4 text-white">Silver Sponsors</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-gray-900 p-8 rounded-xl text-center shadow-lg hover:-translate-y-2 transition-transform border border-gray-700 hover:border-orange-600">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=ABn9GcSZUbJt2kYQxhoJBfIFwhGZW_vlsifd5AUMDg&s" alt="Major League Hacking" class="h-16 mx-auto mb-4 transition-transform duration-300 hover:scale-110"/>
+                    <h3 class="text-white">Major League Hacking</h3>
+                    <p class="text-gray-400">Hackathon Organizer</p>
+                </div>
+                <div class="bg-gray-900 p-8 rounded-xl text-center shadow-lg hover:-translate-y-2 transition-transform border border-gray-700 hover:border-orange-600">
+                    <img src="https://drexel.edu/~/media/Images/pennoni/phc-logo.ashx?h=83&w=325&hash=3A340C63045AED0259F469901AB7B42F79E417E8" alt="Drexel Pennoni Honors College" class="h-16 mx-auto mb-4 transition-transform duration-300 hover:scale-110" onerror="this.src='https://via.placeholder.com/150'"/>
+                    <h3 class="text-white">Drexel Pennoni Honors College</h3>
+                    <p class="text-gray-400">Academic Partner</p>
+                </div>
+            </div>
+            <h3 class="text-2xl font-bold mb-4 text-white">Become a Sponsor</h3>
+            <p class="text-lg mb-6 text-gray-300">Interested in sponsoring DragonHacks XII? Join us to promote your brand and support student innovation.</p>
+            <a href="mailto:teamdragonhacks@gmail.com" class="inline-block px-8 py-4 bg-gradient-to-r from-blue-700 to-gray-600 text-white text-lg font-bold rounded-full hover:scale-105 hover:shadow-2xl hover:bg-gradient-to-r hover:from-voilet-600 hover:to-orange-500 transition-all duration-300 border-2 border-orange-600">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-gray-900">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-white max-md:text-3xl">Frequently Asked Questions</h2>
+            <div class="faq-item mb-4 border border-gray-700 rounded-lg overflow-hidden bg-gray-900">
+                <div class="faq-question p-6 bg-gray-800 cursor-pointer font-bold hover:bg-gray-700 transition-colors text-white" onclick="toggleFAQ(this)">
+                    What is DragonHacks?
+                </div>
+                <div class="faq-answer p-6 bg-gray-900 text-gray-300 hidden">
+                    A 24-hour hackathon at Drexel for innovative projects.
+                </div>
+            </div>
+            <div class="faq-item mb-4 border border-gray-700 rounded-lg overflow-hidden bg-gray-900">
+                <div class="faq-question p-6 bg-gray-800 cursor-pointer font-bold hover:bg-gray-700 transition-colors text-white" onclick="toggleFAQ(this)">
+                    Who can participate?
+                </div>
+                <div class="faq-answer p-6 bg-gray-900 text-gray-300 hidden">
+                    College students aged 18+ enrolled in any institution.
+                </div>
+            </div>
+            <div class="faq-item mb-4 border border-gray-700 rounded-lg overflow-hidden bg-gray-900">
+                <div class="faq-question p-6 bg-gray-800 cursor-pointer font-bold hover:bg-gray-700 transition-colors text-white" onclick="toggleFAQ(this)">
+                    How will the hackathon be conducted?
+                </div>
+                <div class="faq-answer p-6 bg-gray-900 text-gray-300 hidden">
+                    DragonHacks XII will be an in-person event held at Drexel University, spanning 24 hours. It includes opening ceremonies, team formation, hacking sessions with workshops, and a final presentation phase with judging. All activities will take place in designated campus spaces with internet access and resources provided.
+                </div>
+            </div>
+            <div class="faq-item mb-4 border border-gray-700 rounded-lg overflow-hidden bg-gray-900">
+                <div class="faq-question p-6 bg-gray-800 cursor-pointer font-bold hover:bg-gray-700 transition-colors text-white" onclick="toggleFAQ(this)">
+                    What are the dates for DragonHacks 2026?
+                </div>
+                <div class="faq-answer p-6 bg-gray-900 text-gray-300 hidden">
+                    DragonHacks XII is scheduled for January 2026. Exact dates will be announced closer to the event, with registration opening in October 2025.
+                </div>
+            </div>
+            <div class="faq-item mb-4 border border-gray-700 rounded-lg overflow-hidden bg-gray-900">
+                <div class="faq-question p-6 bg-gray-800 cursor-pointer font-bold hover:bg-gray-700 transition-colors text-white" onclick="toggleFAQ(this)">
+                    What prizes are offered?
+                </div>
+                <div class="faq-answer p-6 bg-gray-900 text-gray-300 hidden">
+                    Prizes total $10K, including cash awards, tech gadgets, and internship opportunities, sponsored by our platinum, gold, and silver sponsors. Specific prize details will be revealed during the event kickoff.
+                </div>
+            </div>
+            <div class="faq-item mb-4 border border-gray-700 rounded-lg overflow-hidden bg-gray-900">
+                <div class="faq-question p-6 bg-gray-800 cursor-pointer font-bold hover:bg-gray-700 transition-colors text-white" onclick="toggleFAQ(this)">
+                    Do I need to bring my own equipment?
+                </div>
+                <div class="faq-answer p-6 bg-gray-900 text-gray-300 hidden">
+                    Participants should bring their own laptops and chargers. Drexel will provide Wi-Fi, power strips, and basic hardware. Additional resources like Arduino kits or Raspberry Pis may be available on a first-come, first-served basis.
+                </div>
+            </div>
+            <div class="faq-item mb-4 border border-gray-700 rounded-lg overflow-hidden bg-gray-900">
+                <div class="faq-question p-6 bg-gray-800 cursor-pointer font-bold hover:bg-gray-700 transition-colors text-white" onclick="toggleFAQ(this)">
+                    Are meals provided during the event?
+                </div>
+                <div class="faq-answer p-6 bg-gray-900 text-gray-300 hidden">
+                    Yes, meals, snacks, and beverages will be provided throughout the 24 hours, courtesy of our sponsors. Dietary restrictions can be accommodated if noted during registration.
+                </div>
+            </div>
+            <div class="faq-item mb-4 border border-gray-700 rounded-lg overflow-hidden bg-gray-900">
+                <div class="faq-question p-6 bg-gray-800 cursor-pointer font-bold hover:bg-gray-700 transition-colors text-white" onclick="toggleFAQ(this)">
+                    How are teams judged?
+                </div>
+                <div class="faq-answer p-6 bg-gray-900 text-gray-300 hidden">
+                    Teams are judged based on fit with the chosen track/theme, code quality, innovation, and impact. A panel of judges will evaluate live demos and submissions on Devpost.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-12 text-white max-md:text-3xl">Contact Us</h2>
+            <p class="mb-8 text-lg text-gray-300">Questions? Reach out for event or sponsorship details.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="p-8 bg-black/30 rounded-xl backdrop-blur-md border border-gray-600">
+                    <h3 class="text-2xl mb-4 text-orange-600">📧 Email</h3>
+                    <p><a href="mailto:teamdragonhacks@gmail.com" class="text-gray-300 hover:text-orange-600 transition-colors">teamdragonhacks@gmail.com</a></p>
+                </div>
+                <div class="p-8 bg-black/30 rounded-xl backdrop-blur-md border border-gray-600">
+                    <h3 class="text-2xl mb-4 text-orange-600">📱 Follow Us</h3>
+                    <div class="flex justify-center gap-6">
+                        <a href="https://x.com/dragonhacks" class="text-gray-300 hover:text-orange-600 transition-colors">X</a>
+                        <a href="https://instagram.com/dragonhacks" class="text-gray-300 hover:text-orange-600 transition-colors">Instagram</a>
+                        <a href="https://linkedin.com/company/dragonhacks" class="text-gray-300 hover:text-orange-600 transition-colors">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="p-8 bg-black/30 rounded-xl backdrop-blur-md border border-gray-600">
+                    <h3 class="text-2xl mb-4 text-orange-600">📍 Location</h3>
+                    <p>Drexel University<br>Philadelphia, PA</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white text-center py-8 border-t border-gray-700">
+        <div class="max-w-6xl mx-auto px-4">
+            <p>&copy; 2026 DragonHacks | Organized by Drexel IEEE</p>
+            <p class="mt-2 text-sm">Questions? Email <a href="mailto:teamdragonhacks@gmail.com" class="text-gray-300 hover:text-orange-600">teamdragonhacks@gmail.com</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-black/95');
+            } else {
+                navbar.classList.remove('bg-black/95');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // FAQ toggle functionality
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const isActive = answer.classList.contains('block');
+            
+            // Close all FAQ answers
+            document.querySelectorAll('.faq-answer').forEach(faq => {
+                faq.classList.remove('block');
+                faq.classList.add('hidden');
+            });
+            
+            // Open clicked FAQ if it wasn't already active
+            if (!isActive) {
+                answer.classList.remove('hidden');
+                answer.classList.add('block');
+            }
+        }
+
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'absolute w-1 h-1 bg-white/30 rounded-full animate-float';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Countdown animation for stats
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.querySelectorAll('.count-up').forEach(el => {
+                        const target = parseInt(el.getAttribute('data-target'));
+                        let start = 0;
+                        const increment = target / (2000 / 16);
+                        function updateCount() {
+                            start += increment;
+                            if (start >= target) {
+                                el.textContent = target === 10000 ? '$10K' : target;
+                                el.classList.add('bounce');
+                                return;
+                            }
+                            el.textContent = target === 10000 ? '$' + Math.floor(start / 1000) + 'K' : Math.floor(start);
+                            requestAnimationFrame(updateCount);
+                        }
+                        requestAnimationFrame(updateCount);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Add scroll animations for sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 1s ease, transform 1s ease';
+            observer.observe(section);
+            if (section.id === 'stats') {
+                statsObserver.observe(section);
+            }
+        });
+
+        // Initialize particles when page loads
+        window.addEventListener('load', createParticles);
+    </script>
+</body>
 </html>
